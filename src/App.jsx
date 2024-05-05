@@ -1,7 +1,10 @@
 import React from 'react'
+import BotCollection from './components/BotCollection'
 
 export default function App() {
   return (
-    <div>App</div>
+    <div>
+      <BotCollection/>
+    </div>
   )
 }
