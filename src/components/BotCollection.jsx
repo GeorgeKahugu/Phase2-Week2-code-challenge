@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 
-function BotCollection() {
+function BotCollection({addBotToArmy}) {
   const [bots, setBots] = useState([]);
 
   useEffect(() => {
@@ -11,11 +11,11 @@ function BotCollection() {
   }, []);
 
   return (
-    <div className="bot-collection">
+    <div className="bot-collection">  
       {bots.map((bot, index) => {
         return (
 
-          <div className="card" key={index}>
+          <div onClick={()=>addBotToArmy(bot)} className="card" key={index}>
             <img src={bot.avatar_url} alt={bot.name} />
             <p>Id:{bot.id}</p>
             <p>Name:{bot.name}</p>
