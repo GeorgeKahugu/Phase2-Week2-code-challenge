@@ -3,12 +3,27 @@ import { useState, useEffect } from "react";
 
 function BotCollection({addBotToArmy}) {
   const [bots, setBots] = useState([]);
+  const [shouldRender,setRender]=useState(false)
+
 
   useEffect(() => {
     fetch("http://localhost:3000/bots")
       .then((response) => response.json())
       .then((data) => setBots(data));
   }, []);
+
+  useEffect(() => {
+    fetch("http://localhost:3000/bots")
+      .then((response) => response.json())
+      .then((data) => setBots(data));
+  }, [shouldRender]);
+
+  // const deleteBot=(deleteId)=>{
+  //   fetch(`${"http://localhost:3000/bots"}/${deleteId}`,{ method:'DELETE'}), .then(()=>
+  //   setRender)
+  //   });
+    
+  // }
 
   return (
     <div className="bot-collection">  

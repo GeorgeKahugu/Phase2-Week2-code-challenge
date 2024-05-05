@@ -5,7 +5,15 @@ function YourBotArmy() {
   const [armyofBots, setArmyofBots] = useState([]);
 
   const addBotToArmy = (bot) => {
+    if(!armyofBots.find((armyBot)=>armyBot.id===bot.id))
     setArmyofBots([...armyofBots, bot]);
+
+const dispatchBotFromArmy=(Id)=>{
+  const updateBot
+
+}
+
+
   };
 
   return (
@@ -23,6 +31,7 @@ function YourBotArmy() {
             <p>Catch Phrase:{bot.catchphrase}</p>
             <p>Created At:{bot.created_at}</p>
             <p>Updated At:{bot.updated_at}</p>
+            <button onClick={()=>deleteBot(bot.id)}/>X
           </div>
         );
       })}
