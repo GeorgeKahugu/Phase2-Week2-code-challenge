@@ -1,14 +1,21 @@
-import React from 'react'
+import React ,{useState}from 'react'
 import BotCollection from './components/BotCollection'
 import "./App.css"
 import YourBotArmy from './components/YourBotArmy'
 
-export default function App() {
+ function App(){
+  const [renderBotCollection,setRenderBotCollection]=useState(false);
+  const updateRenderBotCollection=()=>{
+    setRenderBotCollection(true);
+  };
+
   return (
     <div>
-      <YourBotArmy/>
-      <BotCollection/>
+      <YourBotArmy updateRenderBotCollection={updateRenderBotCollection}/>   
+      <BotCollection/> 
     </div>
-  )
+  );
 }
 
+
+export default App;

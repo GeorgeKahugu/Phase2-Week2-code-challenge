@@ -1,18 +1,22 @@
 import { useState } from "react";
 import BotCollection from "./BotCollection";
 
-function YourBotArmy() {
+function YourBotArmy({renderBotCollection}) {
   const [armyofBots, setArmyofBots] = useState([]);
+  const url= "http://localhost:3000/bots";
 
   const addBotToArmy = (bot) => {
     if(!armyofBots.find((armyBot)=>armyBot.id===bot.id))
     setArmyofBots([...armyofBots, bot]);
-
+  }
 const dispatchBotFromArmy=(Id)=>{
-  const updateBot
+  const updateBot=armyofBots.filter((bot)=>bot.id !== Id);
+  setArmyofBots(updateBot);
+};
 
-}
-
+const deleteBot=(url, deleteId) => {
+  fetch(`${url}/${deleteId}`,{method:"DELETE"}).then(()=>renderBotCollection(true)
+);
 
   };
 
@@ -31,7 +35,7 @@ const dispatchBotFromArmy=(Id)=>{
             <p>Catch Phrase:{bot.catchphrase}</p>
             <p>Created At:{bot.created_at}</p>
             <p>Updated At:{bot.updated_at}</p>
-            <button onClick={()=>deleteBot(bot.id)}/>X
+            <button onClick={()=>deleteBot(bot.id)}>X</button>
           </div>
         );
       })}

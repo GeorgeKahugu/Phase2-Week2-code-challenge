@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 
-function BotCollection({addBotToArmy}) {
+function BotCollection({addBotToArmy,renderBotCollection}){
   const [bots, setBots] = useState([]);
   const [shouldRender,setRender]=useState(false)
 
@@ -16,14 +16,10 @@ function BotCollection({addBotToArmy}) {
     fetch("http://localhost:3000/bots")
       .then((response) => response.json())
       .then((data) => setBots(data));
-  }, [shouldRender]);
+  }, [renderBotCollection]);
 
-  // const deleteBot=(deleteId)=>{
-  //   fetch(`${"http://localhost:3000/bots"}/${deleteId}`,{ method:'DELETE'}), .then(()=>
-  //   setRender)
-  //   });
-    
-  // }
+  
+  
 
   return (
     <div className="bot-collection">  
