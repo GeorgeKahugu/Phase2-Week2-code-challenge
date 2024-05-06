@@ -1,32 +1,31 @@
+// imports
 import { useState, useEffect } from "react";
 
-
+// Call a function
 function BotCollection({addBotToArmy,renderBotCollection}){
   const [bots, setBots] = useState([]);
-  const [shouldRender,setRender]=useState(false)
+  const bot_url="http://localhost:3000/bots";
 
-
-  useEffect(() => {
+// fetch the URL
+  const fetch_bot= () => {
     fetch("http://localhost:3000/bots")
       .then((response) => response.json())
       .then((data) => setBots(data));
-  }, []);
-
-  useEffect(() => {
-    fetch("http://localhost:3000/bots")
-      .then((response) => response.json())
-      .then((data) => setBots(data));
-  }, [renderBotCollection]);
-
+  }
   
-  
+// useEffect
+  useEffect(() => {fetch_bot()},[]);
 
+  useEffect(()=> {fetch_bot()},[renderBotCollection]);
+
+    // return
   return (
     <div className="bot-collection">  
       {bots.map((bot, index) => {
         return (
 
-          <div onClick={()=>addBotToArmy(bot)} className="card" key={index}>
+// onClick
+          <div onClick={()=>addBotToArmy(bot)} className="cardofbot" key={index}>
             <img src={bot.avatar_url} alt={bot.name} />
             <p>Id:{bot.id}</p>
             <p>Name:{bot.name}</p>
@@ -43,4 +42,6 @@ function BotCollection({addBotToArmy,renderBotCollection}){
     </div>
   );
 }
+
+// export component
 export default BotCollection;

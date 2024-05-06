@@ -1,30 +1,39 @@
+// import components
 import { useState } from "react";
 import BotCollection from "./BotCollection";
 
+// Call a function
 function YourBotArmy({renderBotCollection}) {
   const [armyofBots, setArmyofBots] = useState([]);
-  const url= "http://localhost:3000/bots";
+  const url_bots= "http://localhost:3000/bots";
 
+  // const elements
   const addBotToArmy = (bot) => {
     if(!armyofBots.find((armyBot)=>armyBot.id===bot.id))
     setArmyofBots([...armyofBots, bot]);
+
   }
 const dispatchBotFromArmy=(Id)=>{
   const updateBot=armyofBots.filter((bot)=>bot.id !== Id);
   setArmyofBots(updateBot);
 };
 
-const deleteBot=(url, deleteId) => {
-  fetch(`${url}/${deleteId}`,{method:"DELETE"}).then(()=>renderBotCollection(true)
+
+const deleteBot=(url_bots, deleteId) => {
+  fetch(`${url_bots}/${deleteId}`,{method:"DELETE"})
+  .then(()=>{dispatchBotFromArmy(deleteId);
+  updateRenderBotCollection(true);
+  }
 );
+};
 
-  };
-
+  
+// return
   return (
     <div className="bot-collection">
       {armyofBots.map((bot, index) => {
         return (
-          <div key={index} className="card">
+          <div onClick={()=> dispatchBotFromArmy(bot)} key={index} className="cardofbot">
             <img src={bot.avatar_url} alt={bot.name} />
             <p>Id:{bot.id}</p>
             <p>Name:{bot.name}</p>
@@ -44,4 +53,5 @@ const deleteBot=(url, deleteId) => {
   );
 }
 
+// export
 export default YourBotArmy;
