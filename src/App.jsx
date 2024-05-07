@@ -1,5 +1,5 @@
 // import components
-import React ,{useState}from 'react'
+import React ,{useEffect,useState}from 'react'
 import BotCollection from './components/BotCollection'
 import "./App.css"
 import YourBotArmy from './components/YourBotArmy'
@@ -7,12 +7,14 @@ import YourBotArmy from './components/YourBotArmy'
 // Function to call App
  function App(){
   const [renderBotCollection,setRenderBotCollection]=useState(false);
+
+  
   
   const updateRenderBotCollection=(renderBotCollection)=>{
     // if else statement
     if (renderBotCollection === false){
       setRenderBotCollection(true);
-    }else {
+    } else {
     
     setRenderBotCollection(false);
   }

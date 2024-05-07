@@ -8,15 +8,15 @@ function BotCollection({addBotToArmy,renderBotCollection}){
 
 // fetch the URL
   const fetch_bot= () => {
-    fetch("http://localhost:3000/bots")
+    fetch(bot_url)
       .then((response) => response.json())
       .then((data) => setBots(data));
   }
   
 // useEffect
-  useEffect(() => {fetch_bot()},[]);
+  useEffect(() => {fetch_bot() }, []);
 
-  useEffect(()=> {fetch_bot()},[renderBotCollection]);
+  useEffect(()=> {fetch_bot() }, [renderBotCollection]);
 
     // return
   return (
