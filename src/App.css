@@ -8,7 +8,7 @@
   
 }
 
-.cardofbot{
+.card-of-bot{
   margin:10px;
   border:1px solid white;
   text-align: center;
@@ -16,3 +16,4 @@
   width:calc(20%-4px);
   border-radius:5px;
 }
+

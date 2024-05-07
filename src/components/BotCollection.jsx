@@ -25,7 +25,7 @@ function BotCollection({addBotToArmy,renderBotCollection}){
         return (
 
 // onClick
-          <div onClick={()=>addBotToArmy(bot)} className="cardofbot" key={index}>
+          <div onClick={()=>addBotToArmy(bot)} className="card-of-bot" key={index}>
             <img src={bot.avatar_url} alt={bot.name} />
             <p>Id:{bot.id}</p>
             <p>Name:{bot.name}</p>
